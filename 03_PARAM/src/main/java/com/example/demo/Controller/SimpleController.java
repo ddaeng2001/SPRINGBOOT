@@ -24,9 +24,24 @@ public class SimpleController {
 
     @RequestMapping(value = "/test2",method= RequestMethod.GET)
     //여러요청을 받아냄
-    public void test2()
+    public String test2()
+
     {
         log.info("GET /simple/test2...");
+        //기본적으로 제공하는 위치: /WEB-INF/views/ .jsp
+        return "simple/abcd"; //명확하게 어떤 파일을 보여줄 지 알려주기
+    }
+
+
+    //페이지에서 요청하면 기본적으로 GET(문서 요청)
+                                            //여러 요청을 받아낼 시 {}로 묶기
+    @RequestMapping(value = "/test3",method= {RequestMethod.GET, RequestMethod.POST})
+    //여러요청을 받아냄
+    public void test3()
+
+    {
+        log.info("GET/POST /simple/test3...");
+        //기본적으로 제공하는 위치: /WEB-INF/views/ .jsp
     }
 
 
