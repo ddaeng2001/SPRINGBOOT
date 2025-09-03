@@ -37,6 +37,10 @@ dependencies {
     //JSP EMBED TOMCAT
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.10'
 
+    //JSP EL PARSER - EL표현식을 쓰기 위한 라이브러리
+    // https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api
+    implementation 'jakarta.el:jakarta.el-api:6.0.1'
+
     //JSTL
     implementation 'jakarta.servlet:jakarta.servlet-api' //스프링부트 3.0 이상
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //스프링부트 3.0 이상

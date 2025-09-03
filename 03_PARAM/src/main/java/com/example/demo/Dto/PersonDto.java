@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 /*@Getter
 @Setter
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Data
 //@Data로 get,set,equals,toString()등을 사용할 수 있음
 @Builder
-@Component //ApplicationContext내의 personDto 객체 생성
+//@Component //ApplicationContext내의 personDto 객체 생성
 
 // f == fields, m == 메서드
 public class PersonDto {
