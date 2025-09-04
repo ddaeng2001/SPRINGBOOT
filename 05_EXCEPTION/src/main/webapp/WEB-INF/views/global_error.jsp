@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>
-	/except/ERROR PAGE
+	GLOBAL ERROR PAGE
 </h1>
 
 EX : ${ex}
