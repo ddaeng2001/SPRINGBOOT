@@ -5,11 +5,10 @@
 	<title>Home</title>
 </head>
 <body>
+<h1>
+	/param/forward/step2
+</h1>
 
-<h1> INDEX PAGE  </h1>
 
-<div>
-    ${message}
-</div>
 </body>
 </html>

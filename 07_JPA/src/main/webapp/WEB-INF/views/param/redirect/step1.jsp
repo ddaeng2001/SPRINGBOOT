@@ -5,11 +5,14 @@
 	<title>Home</title>
 </head>
 <body>
+<h1>
+	/param/redirect/step1
+</h1>
 
-<h1> INDEX PAGE  </h1>
+INIT : ${init}<br/>
+R_INIT2 : ${r_init2}<br/>
+STEP1 : ${step1}<br/>
 
-<div>
-    ${message}
-</div>
+새로운 요청을 하는 과정에서 INIT은 초기화돼서 보이지 않고 STEP1만 보여질 예정
 </body>
 </html>

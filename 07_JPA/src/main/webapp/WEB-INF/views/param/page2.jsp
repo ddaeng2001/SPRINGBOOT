@@ -5,11 +5,14 @@
 	<title>Home</title>
 </head>
 <body>
+<h1>
+	/param/page2
+</h1>
 
-<h1> INDEX PAGE  </h1>
+<EL 표현식>
+NAME : ${dto.name}<br/>
+AGE : ${dto.age}<br/>
+ADDR : ${dto.addr}<br/>
 
-<div>
-    ${message}
-</div>
 </body>
 </html>
