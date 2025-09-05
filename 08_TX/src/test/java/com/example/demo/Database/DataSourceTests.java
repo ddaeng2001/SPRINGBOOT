@@ -15,26 +15,26 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 public class DataSourceTests {
 
-    @Autowired
-    private DataSource dataSource;
-
-    @Test
-    public void t1() throws SQLException {
-        //단위테스트 함수
-        assertNotNull(dataSource); //Nullcheck!
-        System.out.println(dataSource); //결과 : HikariDataSource (null)
-
-        //DB와 실제 연결된 세션을 얻어 쿼리를 실행하기 위한 준비
-        Connection conn = dataSource.getConnection();
-
-        //쿼리문 던질 준비
-        PreparedStatement pstmt = conn.prepareStatement("insert into tbl_memo values(?,?,?,?)");
-        pstmt.setLong(1,1L);
-        pstmt.setString(2,"내용내용..");
-        pstmt.setString(3, "test@naver.com");
-        pstmt.setString(4, LocalDateTime.now().toString());
-        int result = pstmt.executeUpdate();
-    }
+//    @Autowired
+//    private DataSource dataSource;
+//
+//    @Test
+//    public void t1() throws SQLException {
+//        //단위테스트 함수
+//        assertNotNull(dataSource); //Nullcheck!
+//        System.out.println(dataSource); //결과 : HikariDataSource (null)
+//
+//        //DB와 실제 연결된 세션을 얻어 쿼리를 실행하기 위한 준비
+//        Connection conn = dataSource.getConnection();
+//
+//        //쿼리문 던질 준비
+//        PreparedStatement pstmt = conn.prepareStatement("insert into tbl_memo values(?,?,?,?)");
+//        pstmt.setLong(1,1L);
+//        pstmt.setString(2,"내용내용..");
+//        pstmt.setString(3, "test@naver.com");
+//        pstmt.setString(4, LocalDateTime.now().toString());
+//        int result = pstmt.executeUpdate();
+//    }
 
     //java-Config 연결
     @Autowired

@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 //설정파일
 @Configuration
-@EnableTransactionManagement
+@EnableTransactionManagement //매니저 활성화
 public class TxConfig {
 
     //dataSource 거내쓰기

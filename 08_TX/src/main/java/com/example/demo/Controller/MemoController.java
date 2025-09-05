@@ -27,7 +27,7 @@ public class MemoController {
 
     //MemoDao와 연결하기
     @Autowired
-    private MemoService memoservice;
+    private MemoService memoService;
 
     //모든 예외처리
 //    @ExceptionHandler(Exception.class)
@@ -77,7 +77,7 @@ public class MemoController {
 //        //끝난 후 결과물 뷰로 전달 / 뷰로 이동
 //        return (isAdded)?"redirect:/":"memo/add";
 
-        Long insertedId = memoservice.memoRegistration2(dto);
+        Long insertedId = memoService.memoRegistration2(dto);
         if(insertedId!=null)
             redirectAttributes.addFlashAttribute("message","메모등록완료: "+insertedId);
         //뷰로 이동

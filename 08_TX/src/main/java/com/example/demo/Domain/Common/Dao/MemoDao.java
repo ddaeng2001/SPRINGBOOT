@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 //Context 영역에 Bean으로 등록시킴
 @Repository
