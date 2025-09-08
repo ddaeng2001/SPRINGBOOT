@@ -36,8 +36,8 @@ public class MemoController {
 
 	@PostMapping("/add")
     //01 파라미터 받기(MemoDto)
-	public String add_memo_post(@Valid MemoDto dto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes ) throws Exception{
-		log.info("POST /memo/add...");
+	public String add_post(@Valid MemoDto dto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes ) throws Exception{
+		log.info("POST /memo/add..." +dto);
         //02 유효성 검증(BindingResult)
 
         log.info("유효성 오류 발생 여부 : " + bindingResult.hasErrors());
@@ -53,9 +53,9 @@ public class MemoController {
 
 
         //03 서비스 실행(memoService(dto) 전달 후 memoId값 반환)
-        Long memoId =  memoService.addMemoTx(null);
+        Long memoId =  memoService.addMemoTx(dto);
         if(memoId!=null)
-            redirectAttributes.addFlashAttribute("result", "메모저장 성공 ID : " + memoID);
+            redirectAttributes.addFlashAttribute("result", "메모저장 성공 ID : " + memoId);
 
         //04 뷰로 이동 Redirect:/ , 리다이렉트 메시지 전달
         //redirectAttributes.addFlashAttribute("result","메모저장 성공 ID : " + memoId);

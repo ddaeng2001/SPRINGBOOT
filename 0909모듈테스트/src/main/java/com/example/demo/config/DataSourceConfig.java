@@ -11,15 +11,15 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
 	@Bean
-	public <HikariDataSource> HikariDataSource dataSource()
+	public HikariDataSource dataSource()
 	{
         //HikariDataSource 사용할 것
-        HikariDatSource dataSource = new HikariDatSource();
+        HikariDataSource dataSource = new HikariDataSource();
 
         //Mysql Connection
         // Id : root
         // Pw : 1234
-        datSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/testdb");
         dataSource.setUsername("root");
         dataSource.setPassword("1234");

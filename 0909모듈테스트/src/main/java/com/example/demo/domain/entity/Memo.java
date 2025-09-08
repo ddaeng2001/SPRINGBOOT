@@ -23,5 +23,6 @@ public class Memo {
     //id, text, createAt이라는 이름을 지니는 컬럼 생성
     private Long id;            //ID(기본키)
     private String text;        //내용
+    private String writer;      //작성자
     private LocalDateTime createAt; //만들어진 시간
 }

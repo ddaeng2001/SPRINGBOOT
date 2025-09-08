@@ -20,10 +20,16 @@ public class MemoServiceImpl implements MemoService {
     private MemoRepository memoRepository;
 
     //트랜잭션 설정할 것
-    @Override
     public Long addMemoTx(MemoDto dto) throws Exception{
         log.info("MemoService's addMemoTx2 Call!");
         //코드 완성
-        return null;
+        Memo memo = Memo.builder()
+                .id(null)
+                .text(dto.getText())
+                .writer(dto.getWriter())
+                .createAt(LocalDateTime.now())
+                .build();
+        memoRepository.save(memo);
+        return memo.getId();
     }
 }
