@@ -62,7 +62,8 @@ public class MemoController {
 //            throw new NullPointerException("예외발생!");
 //            throw new Exception("유효성 검증 오류!");
 
-            //예외발생 시 memo/add로 이동
+            // 유효성 검증 후 memoService로 이동해서 내용 확인
+            // 예외발생 시 memo/add로 이동
               return "memo/add";
         }
 

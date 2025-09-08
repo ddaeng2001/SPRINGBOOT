@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Memo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //PK를 지닌 열
     @Column(length=1024)
     private String text;
     @Column(length=100,nullable = false)

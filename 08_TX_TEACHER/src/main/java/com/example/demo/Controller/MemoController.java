@@ -1,22 +1,16 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Domain.Common.Dto.MemoDto;
-import com.example.demo.Domain.Common.Service.MemoService;
+import com.example.demo.Domain.Common.Service.MemoServiceImpl;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.beans.PropertyEditorSupport;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 @Slf4j
@@ -25,7 +19,7 @@ public class MemoController {
 
 
     @Autowired
-    private MemoService memoService;
+    private MemoServiceImpl memoService;
 
 //    @ExceptionHandler(Exception.class)
 //    public String exception_handler(Exception e){
@@ -39,20 +33,24 @@ public class MemoController {
         log.info("GET /memo/add...");
     }
     @PostMapping("/add")
+                                //유효성 검증        //결과 확인
+    // 파라미터
     public String add_memo_post(@Valid MemoDto dto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) throws Exception
     {
         log.info("POST /memo/add..." + dto);
-        //파라미터
+
         //입력값검증(데이터)
         log.info("유효성 오류 발생여부 : " + bindingResult.hasErrors());
         if(bindingResult.hasErrors()){
             for(FieldError error  : bindingResult.getFieldErrors()){
               log.info("Error Field : "+error.getField()+" Error Message : "+error.getDefaultMessage());
                 model.addAttribute(error.getField(),error.getDefaultMessage());
+                //field명과 error메서지를 model에 담아서 저장
             }
             //throw new Exception("유효성 검증 오류!");
             return "memo/add";
-        }
+        } //유효성 검증 후 memoService로 이동해서 내용 확인
+
 
         //서비스 요청 -> Domain.Common.Service
 //        boolean isAdded = memoService.memoRegistration(dto);
