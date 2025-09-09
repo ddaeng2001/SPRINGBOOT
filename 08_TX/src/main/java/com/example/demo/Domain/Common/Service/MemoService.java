@@ -1,4 +1,4 @@
-//package com.example.demo.Domain.Common.Service;
+package com.example.demo.Domain.Common.Service;
 //
 //import com.example.demo.Domain.Common.Dao.MemoDao;
 //import com.example.demo.Domain.Common.Dto.MemoDto;
@@ -41,7 +41,7 @@ public class MemoService {
         return result>0;
     }
 
-        //쿼리 사용 시 문제가 발생하면 원복을 시켜줌!
+    //쿼리 사용 시 문제가 발생하면 원복을 시켜주는 TX 설정
     @Transactional(rollbackFor = SQLException.class, transactionManager = "jpaTransactionManager")
     public Long memoRegistration2(MemoDto dto) throws Exception{
 

@@ -28,6 +28,7 @@ import java.util.Properties;
 @EnableJpaRepositories(
         basePackages = {"com.example.demo.Domain.Common.Repository"},
         transactionManagerRef = "jpaTransactionManager"
+        //레파지토리들이 TX manager를 참조해서 TX처리가 될 수 있도록 함
 )
 public class JpaConfig {
     
