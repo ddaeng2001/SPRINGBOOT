@@ -13,3 +13,4 @@ public interface MemoRepository extends JpaRepository<Memo,Long> {
                                         //JpaRepository<Memo,Long> : 기본 CRUD하는 함수들이 생성됨
 //MemoRepository도 CRUD기능을 소유하게 됨
 }
+
