@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 
 @Entity //테이블 생성
 @Table(name="memo")
+
+//아래 Annotation은 Java에서 쓰기 위한 lombok 설정
 @Data
 @NoArgsConstructor //디폴트 생성자
 @AllArgsConstructor //모든 아규먼트를 받는 생성자

@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+//설정 빈을 만들어서 내부 빈들이 생성될 수 있도록 함
 @Configuration
 
 //Entity가 있는 위치를 스캐닝
@@ -34,7 +35,7 @@ public class JpaConfig {
 
     @Bean
                  //FactoryBean을 이용해서 여러 엔터티를 Bean으로 만듦
-    LocalContainerEntityManagerFactoryBean entityManagerFactory() { //이름 동일해야함!!
+    LocalContainerEntityManagerFactoryBean entityManagerFactory() { //이름 동일해야함!! - 이름으로 Bean 생성됨
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
@@ -45,10 +46,12 @@ public class JpaConfig {
 
         Map<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", "update");                         // 필요에 따라 'create', 'validate' 등으로 변경
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect"); // 사용 중인 DB에 맞게 변경
+//        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect"); // 사용 중인 DB에 맞게 변경
         properties.put("hibernate.show_sql", true);
         properties.put("hibernate.format_sql", true);
 
+
+        //JPA 관련 처리 시 최적화
         properties.put("hibernate.hibernate.jdbc.batch_size", 1000);
         properties.put("hibernate.hibernate.order_inserts", true);
         properties.put("hibernate.order_updates", true);

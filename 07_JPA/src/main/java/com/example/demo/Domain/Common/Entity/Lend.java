@@ -17,13 +17,14 @@ public class Lend {
     //들어갈 Column명
     @Id
     //값이 들어오면 ID값이 자동증가되도록 설정
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //ID를 지정하고 싶다면 이부분을 주석 처리
     private Long id;
 
     
     //User 테이블과 매핑
     //★★ : 테이블과 매핑되는 부분
-    @ManyToOne //관계매핑(Many : 다 To: 대 One: 일)
+    @ManyToOne(fetch =FetchType.LAZY)
+    //관계매핑(Many : 다 To: 대 One: 일)
     //어떤 컬럼과 연결할지 지정할 때 사용하는 Annotation
     @JoinColumn(
             //Option 삽입
@@ -42,7 +43,7 @@ public class Lend {
 
     
     //Book 테이블과 매핑
-    @ManyToOne
+    @ManyToOne(fetch =FetchType.EAGER)
     @JoinColumn(
             name="bookCode", //foreignKeyDefinition에 들어갈 bookCode와 이름명이 같아야함
             foreignKey = @ForeignKey(
