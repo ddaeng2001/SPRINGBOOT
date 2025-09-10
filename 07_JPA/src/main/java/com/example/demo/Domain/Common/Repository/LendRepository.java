@@ -17,10 +17,14 @@ public interface LendRepository extends JpaRepository<Lend, Long> {
                                             //l안에는 book, user가 있는데 user를 꺼냄 : l.user(Lend 엔티티 안의 user)
                                                             //l.user.username : lend안에 있는 user의 username이 외부의
     //                                                                          username과 일치하는지
-    // lend와 user INNER JOIN
+    // lend와 user INNER JOIN                                                //:username = JPQL 파라미터
     @Query("SELECT l FROM Lend AS l JOIN FETCH l.user WHERE l.user.username=:username")
     List<Lend> findAllLendsByUser(@Param("username") String username); //유저 정보를 받아서 유저가 대여를 얼마나 하고 있는지
     //리스트형 Lend 반환, 변수명                                          //에 대한 lend 반환
+
+    //흐름 - String username으로 외부 인자가 전달되면 @Param을 통해 :username으로 값이 들어감
+    //      DB에서 user1d이 Lend한 모든 기록을 가져옴
+    //      @Param은 메서드 파라미터와 JPQL 파라미터를 이어주는 역할을 함
 
 
     // 빌려진 책들(Lend) 중에서, 책 이름(bookName)이 주어진 값과 같은 모든 대출 기록(Lend)을 조회하는 쿼리
