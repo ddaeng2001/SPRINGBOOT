@@ -1,19 +1,18 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Domain.Common.Dto.MemoDto;
+import com.example.demo.Domain.Common.Entity.Memo;
 import com.example.demo.Domain.Common.Service.MemoService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.beans.PropertyEditorSupport;
@@ -82,6 +81,32 @@ public class MemoController {
             redirectAttributes.addFlashAttribute("message","메모등록완료: "+insertedId);
         //뷰로 이동
         return insertedId!=null?"redirect:/":"memo/add";
+
+
+    }
+
+    //MemoService 작성후
+    @GetMapping("/memo/list")
+    public void list(
+            //1.
+            @RequestParam(value="pageNo", defaultValue = "0") int pageNo,
+            @RequestParam(value="pageNo", defaultValue = "10") int amount //기본값은 정해놓되 외부에서 ~?
+                                            //기본일 경우 pageamount가 0과 10이 됨!
+            //2.
+            //PageDto pageDto
+    ){
+        log.info("GET /memo/list...pageNo : " + pageDto);
+        //pageAble 요청 객체를 여기서 만들거나 Service로 다 넘기는 방법이 있음
+        //파라미터 받기, 유효성체크 생략
+        //유효성 체크 후 Service로 바로 던지기
+        //서비스 실행
+        Page<Memo> page =  memoservice.listMemo(pageDto);
+
+        //뷰로 이동(+데이터)
+        // FN BN가 SB내에 있는 경우에만!
+        model.addAttribute("page", page);
+        model.addAttribute("list", page.getContent());
+        //FN를 나누게 되면 SB에서 model을 관리하는 게 아니기 때문에 다른 방법을 사용해야함
 
 
     }
