@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.Domain.Common.Mapper.MemoMapper">
+<!--    MemoMapper의 insertXML과 연결을 위한 도메인 설정-->
+
+<!--                MemoMapper이 미완성된 함수를 아래에서 담당, sqlSession이 알맞게 구현-->
+    <insert id="insertXML">
+        insert into tbl_memo values(#{id}, #{text}, #{writer}, #{createAt})
+    </insert>
+
+<!--    <update id=""></update>-->
+
+<!--    <delete id=""></delete>-->
+</mapper>
